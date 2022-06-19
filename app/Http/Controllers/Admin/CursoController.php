@@ -59,6 +59,7 @@ class CursoController extends Controller
             $dados['publicado'] = 'nao';
         }
 
+
         if ($req->hasFile('imagem')) {
             $imagem = $req->file('imagem');
             $num = rand(1111, 9999);
@@ -76,6 +77,19 @@ class CursoController extends Controller
     public function deletar($id)
     {
         Curso::find($id)->delete();
+        return redirect()->route('admin.cursos');
+    }
+    public function publicar($id)
+    {
+        $curso = Curso::find($id);
+        //$curso['publicado'] = 'nao';
+     
+        if ($curso['publicado'] == 'sim') {
+            $curso['publicado'] = 'nao';
+        } else {
+            $curso['publicado'] = 'sim';
+        }
+        $curso->save();
         return redirect()->route('admin.cursos');
     }
 }

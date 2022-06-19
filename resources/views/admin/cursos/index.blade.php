@@ -26,6 +26,7 @@
                             <td><img width="90" src="{{asset($registro->imagem)}}" alt="{{ $registro->titulo}}" /></td>
                             <td>{{ $registro->publicado }}</td>
                             <td>
+                                <a class="btn deep-orange" href="{{ route('admin.cursos.publicar', $registro->id) }}">Publicar</a>
                                 <a class="btn deep-orange" href="{{ route('admin.cursos.editar', $registro->id) }}">Editar</a>
                                 <a class="btn red" href="{{ route('admin.cursos.deletar', $registro->id) }}">Deletar</a>
                             </td>
